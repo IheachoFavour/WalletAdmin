@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
 string connectionString;
+Console.WriteLine($"DATABASE_URL from env: {(databaseUrl ?? "NULL - NOT SET!!!")}");
 
 if (string.IsNullOrEmpty(databaseUrl))
 {
@@ -22,20 +23,9 @@ if (string.IsNullOrEmpty(databaseUrl))
 }
 else
 {
+    Console.WriteLine("Using Railway DATABASE_URL");
     // RAILWAY / PRODUCTION
-    var uri = new Uri(databaseUrl);
-
-    var username = uri.UserInfo.Split(':')[0];
-    var password = uri.UserInfo.Split(':')[1];
-
-    connectionString =
-        $"Host={uri.Host};" +
-        $"Port={uri.Port};" +
-        $"Database={uri.AbsolutePath.TrimStart('/')};" +
-        $"Username={username};" +
-        $"Password={password};" +
-        $"SslMode=Require;" +
-        $"Trust Server Certificate=true;";
+    connectionString = databaseUrl;
 }
 
 
