@@ -1,0 +1,53 @@
+@model WalletAdmin.Models.Customer
+
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<div class="edit-container">
+    <div class="glass-form-card">
+        <h1 class="form-title">Edit Customer</h1>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="CustomerId" />
+
+            <div class="form-floating mb-4">
+                <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                <label asp-for="FirstName">First Name</label>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-4">
+                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                <label asp-for="LastName">Last Name</label>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-4">
+                <input asp-for="Email" class="form-control" placeholder="name@example.com" autocomplete="email" />
+                <label asp-for="Email">Email Address</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="action-buttons mt-5">
+                <button type="submit" class="btn btn-submit">
+                    Save Changes
+                </button>
+
+                <a asp-action="Index" class="btn btn-cancel ms-3">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/Edit.css"
+          asp-append-version="true" />
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

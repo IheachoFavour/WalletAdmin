@@ -1,0 +1,49 @@
+@model WalletAdmin.Models.Wallet
+
+@{
+    ViewData["Title"] = "Create Wallet";
+}
+
+<div class="create-container">
+    <div class="glass-form-card">
+        <h1 class="form-title">New Wallet</h1>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+        <form asp-action="Create">
+            <div class="form-floating mb-4">
+                <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <label asp-for="CustomerId">Customer</label>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-4">
+                <select asp-for="Currency" class="form-control" asp-items="ViewBag.Currencies">
+                    <option value="">-- Select Currency --</option>
+                </select>
+                <label asp-for="Currency">Currency</label>
+                <span asp-validation-for="Currency" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-submit w-100">
+                Create Wallet
+            </button>
+        </form>
+
+        <div class="mt-4 text-center">
+            <a asp-action="Index" class="back-link">← Back to Wallets List</a>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/wallet-create.css"
+          asp-append-version="true" />
+}
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

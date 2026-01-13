@@ -1,0 +1,83 @@
+@model IEnumerable<WalletAdmin.Models.Wallet>
+
+@{
+    var customer = ViewBag.Customer as WalletAdmin.Models.Customer;
+    ViewData["Title"] = "Customer Wallets";
+}
+
+<div class="wallets-container">
+    <div class="glass-wallets-card">
+        <h1 class="page-title">
+            Wallets for <span class="customer-highlight">@(customer?.Email ?? "Unknown Customer")</span>
+        </h1>
+
+        <div class="action-bar mb-5">
+            <a asp-controller="Wallets"
+               asp-action="Create"
+               asp-route-customerId="@(customer?.CustomerId)"
+               class="btn btn-action btn-create">
+                <i class="bi bi-plus-circle"></i> Create New Wallet
+            </a>
+
+            <a asp-controller="Customers"
+               asp-action="Index"
+               class="btn btn-action btn-back ms-3">
+                ← Back to Customers
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-wallets">
+                <thead>
+                    <tr>
+                        <th>Wallet ID</th>
+                        <th>Currency</th>
+                        <th>Balance</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var wallet in Model)
+                {
+                    <tr>
+                        <td class="wallet-id">@wallet.WalletId</td>
+                        <td class="currency-cell">@wallet.Currency</td>
+                        <td class="balance-cell">@wallet.Balance.ToString("N2")</td>
+                        <td>@wallet.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>
+                            @(wallet.UpdatedAt != DateTime.MinValue 
+                                ? wallet.UpdatedAt.ToString("yyyy-MM-dd HH:mm") 
+                                : "—")
+                        </td>
+                        <td>
+                            <a asp-controller="Transactions"
+                               asp-action="ByWallet"
+                               asp-route-walletId="@wallet.WalletId"
+                               class="btn btn-sm btn-history">
+                                <i class="bi bi-list-ul"></i> Transactions
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center py-5 empty-state">
+                            This customer doesn't have any wallets yet.
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/ByCustomer.css"
+          asp-append-version="true" />
+}

@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+}
+
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Admin Dashboard</h1>
+
+    <div class="stats-grid">
+        <!-- Customers -->
+        <div class="stat-card">
+            <div class="card-content">
+                <div class="card-title" style="color: #d0fff5">Customers</div>
+                <div class="card-number">@ViewBag.CustomerCount</div>
+                <a asp-controller="Customers" asp-action="Index" class="btn-view">
+                    View Customers →
+                </a>
+            </div>
+        </div>
+
+        <!-- Wallets -->
+        <div class="stat-card">
+            <div class="card-content">
+                <div class="card-title" style="color: #d0fff5">Wallets</div>
+                <div class="card-number">@ViewBag.WalletCount</div>
+                <a asp-controller="Wallets" asp-action="Index" class="btn-view">
+                    View Wallets →
+                </a>
+            </div>
+        </div>
+
+        <!-- Transactions -->
+        <div class="stat-card">
+            <div class="card-content">
+                <div class="card-title" style="color: #d0fff5">Transactions</div>
+                <div class="card-number">@ViewBag.TransactionCount</div>
+                <a asp-controller="Transactions" asp-action="Index" class="btn-view">
+                    View Transactions →
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

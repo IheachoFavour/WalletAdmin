@@ -1,0 +1,132 @@
+
+:root {
+    --gradient-start: #000000;
+    --gradient-mid: #0a1f1c;
+    --gradient-end: #1a3a35;
+    --accent: #A9FFF2;               /* Your requested green */
+    --accent-glow: rgba(169, 255, 242, 0.45);
+    --card-bg: rgba(20, 40, 38, 0.32);
+    --card-border: rgba(169, 255, 242, 0.22);
+    --text-primary: #f0fffc;
+    --text-secondary: #d0fff5;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden !important;      /* ← This stops all scrolling */
+    background: #ffffff;
+}
+
+body {
+    background: linear-gradient(135deg, 
+        var(--gradient-start) 0%, 
+        var(--gradient-mid) 45%, 
+        var(--gradient-end) 100%
+    );
+    background-attachment: fixed;
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacOSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dashboard-container {
+    padding: 3rem 1.2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, #ffffff, var(--accent), #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-shadow: 0 0 40px var(--accent-glow);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.8rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.stat-card:hover {
+    transform: translateY(-14px);
+    box-shadow: 0 25px 70px var(--accent-glow);
+    border-color: var(--accent);
+}
+
+.card-content {
+    padding: 2.4rem 2rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: ;
+    margin-bottom: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+}
+
+.card-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.6rem;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+}
+
+.btn-view {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    background: rgba(169, 255, 242, 0.14);
+    color: var(--text-primary);
+    border: 1.5px solid rgba(169, 255, 242, 0.45);
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.35s ease;
+}
+
+.btn-view:hover {
+    background: rgba(169, 255, 242, 0.38);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px var(--accent-glow);
+}
+
+/* Subtle inner glow on hover */
+.stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(169,255,242,0.14) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}

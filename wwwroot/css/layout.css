@@ -1,0 +1,67 @@
+/* ===== NAVBAR STYLES ===== */
+
+.navbar {
+    background: rgba(10, 20, 18, 0.75) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(169, 255, 242, 0.18);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand {
+    color: #f0fffc !important;
+    letter-spacing: -0.5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #A9FFF2 !important;
+    transform: scale(1.03);
+}
+
+.nav-link {
+    color: #d0fff5 !important;
+    font-weight: 500;
+    padding: 0.6rem 1.1rem !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff !important;
+    background: rgba(169, 255, 242, 0.18);
+    backdrop-filter: blur(8px);
+}
+
+/* Mobile toggler */
+.navbar-toggler {
+    border: 1px solid rgba(169, 255, 242, 0.35);
+    border-radius: 8px;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(169, 255, 242, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Subtle glowing bottom border */
+.navbar-glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(169, 255, 242, 0.25) 30%,
+        rgba(169, 255, 242, 0.55) 50%,
+        rgba(169, 255, 242, 0.25) 70%,
+        transparent 100%
+    );
+    opacity: 0.7;
+    pointer-events: none;
+}

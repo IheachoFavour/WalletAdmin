@@ -1,0 +1,112 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden !important;
+    background: #ffffff;
+}
+
+.create-container {
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.glass-form-card {
+    width: 100%;
+    max-width: 480px;
+    padding: 3.5rem 3rem;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(169, 255, 242, 0.30);
+    border-radius: 24px;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.28),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    transition: transform 0.4s ease;
+}
+
+.glass-form-card:hover {
+    transform: translateY(-10px);
+}
+
+.form-title {
+    color: #1a1a1a;
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow:
+        0 0 12px rgba(169,255,242, 0.8),
+        0 0 24px rgba(169,255,242, 0.5);
+}
+
+.form-floating .form-control,
+.form-floating .form-select {
+    background: rgba(245, 245, 245, 0.9);
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1.6rem 1rem 0.7rem;
+    font-size: 1.05rem;
+    color: #333;
+    transition: all 0.3s ease;
+    height: calc(3.5rem + 2px);
+}
+
+.form-floating .form-control:focus,
+.form-floating .form-select:focus {
+    border-color: #A9FFF2;
+    box-shadow: 0 0 0 3px rgba(169, 255, 242, 0.15);
+    background: white;
+    outline: none;
+}
+
+.form-floating > label {
+    color: #555;
+    font-weight: 500;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select:focus ~ label,
+.form-floating > .form-select:not(:placeholder-shown) ~ label {
+    color: #A9FFF2;
+    transform: scale(0.85) translateY(-0.75rem) translateX(0.25rem);
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #05322c 0%, #7CFFE4 100%);
+    color: #0a1a18;
+    font-weight: 700;
+    font-size: 1.12rem;
+    border: none;
+    border-radius: 14px;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 8px 25px rgba(169, 255, 242, 0.35);
+    transition: all 0.35s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(169, 255, 242, 0.60);
+}
+
+.back-link {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.back-link:hover {
+    text-shadow: 0 0 10px rgba(169, 255, 242, 0.4);
+}
+
+.text-danger {
+    font-weight: 500;
+}

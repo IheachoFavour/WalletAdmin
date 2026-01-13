@@ -1,0 +1,93 @@
+@model IEnumerable<WalletAdmin.Models.Transaction>
+@using WalletAdmin.Models.Enums
+
+<div class="transactions-container">
+    <div class="glass-table-card">
+        <h2 class="table-title">
+            Transactions for <span class="currency-highlight">@ViewBag.Currency </span>Wallet
+            <span class="email-muted">(@ViewBag.CustomerEmail)</span>
+        </h2>
+
+        <div class="action-buttons mb-4">
+            <a asp-controller="Transactions"
+               asp-action="Credit"
+               asp-route-walletId="@ViewBag.WalletId"
+               class="btn btn-action btn-credit">
+                <i class="bi bi-plus-circle"></i> Credit
+            </a>
+
+            @if ((decimal)ViewBag.Balance > 0)
+            {
+                <a asp-controller="Transactions"
+                   asp-action="Debit"
+                   asp-route-walletId="@ViewBag.WalletId"
+                   class="btn btn-action btn-debit ms-2">
+                    <i class="bi bi-dash-circle"></i> Debit
+                </a>
+            }
+            else
+            {
+                <span data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Debit is disabled because wallet balance is 0">
+                    <button class="btn btn-action btn-debit ms-2" disabled>
+                        <i class="bi bi-dash-circle"></i> Debit
+                    </button>
+                </span>
+            }
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-custom">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Balance Before</th>
+                        <th>Balance After</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var tx in Model)
+                {
+                    <tr>
+                        <td>@tx.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>
+                            <span class="badge @(tx.TransactionType == TransactionType.Credit ? "badge-credit" : "badge-debit")" style="color: #000">
+                                @tx.TransactionType
+                            </span>
+                        </td>
+                        <td class="amount-cell">@tx.Amount</td>
+                        <td>@tx.BalanceBefore</td>
+                        <td>@tx.BalanceAfter</td>
+                        <td>@tx.Description</td>
+                    </tr>
+                }
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="6" class="text-center py-4 empty-state">
+                            No transactions found for this wallet.
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a asp-controller="Wallets"
+               asp-action="ByCustomer"
+               asp-route-customerId="@ViewBag.CustomerId"
+               class="back-link">← Back to Wallets</a>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/ByWallet.css"
+          asp-append-version="true" />
+}

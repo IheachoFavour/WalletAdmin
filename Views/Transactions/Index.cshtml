@@ -1,0 +1,77 @@
+@model IEnumerable<Transaction>
+
+@using WalletAdmin.Models.Enums
+@using WalletAdmin.Models
+
+<div class="page-wrapper mt-4">
+<div class="d-flex justify-content-between align-items-center mt-15 mb-4">
+    <h2 class="fw-bold text-dark">Transactions</h2>
+</div>
+
+<div class="card bg-light bg-opacity-100 border border-info border-opacity-100 shadow-lg">
+    <div class="table-responsive">
+        <table class="table table-light table-hover align-middle mb-0"">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Wallet</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Balance Before</th>
+                    <th>Balance After</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var tx in Model)
+        {
+            <tr>
+                <td>@tx.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+
+                <td>
+                    @tx.Wallet.Customer.Email
+                </td>
+
+                <td>
+                    @tx.Currency Wallet
+                </td>
+
+                <td>
+                    <span class="badge @(tx.TransactionType == TransactionType.Credit ? "bg-success" : "bg-danger")">
+                        @tx.TransactionType
+                    </span>
+                </td>
+
+                <td>
+                    @tx.Amount
+                </td>
+
+                <td>
+                    @tx.BalanceBefore
+                </td>
+
+                <td>
+                    @tx.BalanceAfter
+                </td>
+
+                <td>
+                    @tx.Description
+                </td>
+            </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Styles {
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden !important;      /* ← This stops all scrolling */
+            background: #ffffff;
+        }
+    </style>
+}

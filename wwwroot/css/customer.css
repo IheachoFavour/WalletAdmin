@@ -1,0 +1,90 @@
+/* Container for the table mimicking the stat-card style */
+.theme-card-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Table Styling */
+.theme-table {
+    color: var(--text-secondary) !important;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* Gives a slight gap between rows if desired */
+}
+
+.theme-table thead th {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid var(--card-border);
+    padding: 1rem;
+}
+
+.theme-table tbody td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid rgba(169, 255, 242, 0.05);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.theme-table tbody tr:hover td {
+    background: rgba(169, 255, 242, 0.05);
+    color: #fff;
+}
+
+/* Specific text highlights */
+.accent-text {
+    color: var(--accent) !important;
+    font-family: 'Courier New', monospace; /* Looks "techy" for emails */
+}
+
+.date-badge {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Action Buttons Styling */
+.action-links {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.action-btn.edit { 
+    color: #ffca2c; 
+    border-color: rgba(255, 202, 44, 0.2); 
+}
+.action-btn.wallet { 
+    color: var(--accent); 
+    border-color: var(--card-border); 
+}
+.action-btn.delete { 
+    color: #ff6b6b; 
+    border-color: rgba(255, 107, 107, 0.2); 
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.action-btn.wallet:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}

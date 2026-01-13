@@ -1,0 +1,100 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* ===== Glass Table Container ===== */
+.glass-table {
+  background: linear-gradient(
+      135deg,
+      rgba(10, 25, 23, 0.55),
+      rgba(18, 45, 42, 0.45)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(169, 255, 242, 0.22);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* ===== Table Styling ===== */
+.glass-table table {
+  margin-bottom: 0;
+  color: #f0fffc;
+}
+
+.glass-table thead {
+  background: rgba(169, 255, 242, 0.15);
+}
+
+.glass-table th {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: #d0fff5;
+  border-bottom: 1px solid rgba(169, 255, 242, 0.25);
+}
+
+.glass-table td {
+  border-color: rgba(169, 255, 242, 0.12);
+  vertical-align: middle;
+}
+
+/* ===== Row Hover Effect ===== */
+.glass-table tbody tr {
+  transition: all 0.25s ease;
+}
+
+.glass-table tbody tr:hover {
+  background: rgba(169, 255, 242, 0.12);
+}
+
+/* ===== Action Buttons ===== */
+.glass-actions a {
+  color: #A9FFF2;
+  margin-right: 0.6rem;
+  font-size: 1.1rem;
+  transition: all 0.25s ease;
+}
+
+.glass-actions a:hover {
+  color: white;
+  text-shadow: 0 0 12px rgba(169, 255, 242, 0.75);
+}
+
+/* ===== Empty State ===== */
+.glass-empty {
+  padding: 2rem;
+  text-align: center;
+  color: #d0fff5;
+  font-style: italic;
+}
+
