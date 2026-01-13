@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
     //options.UseNpgsql(connectionString));
 
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+Console.WriteLine("DATABASE_URL = " + databaseUrl);
 
 string connectionString;
 Console.WriteLine($"DATABASE_URL from env: {(databaseUrl ?? "NULL - NOT SET!!!")}");
